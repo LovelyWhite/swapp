@@ -1,5 +1,7 @@
 export let backgroundColor = "#e9e9f1";
 
+export let RequestURL="";
+
 // 返回一个字符串显示发送日期
 //返回 昨天 前天 和日期
 export function getTimeString(timestamp: number): string {

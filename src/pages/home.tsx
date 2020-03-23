@@ -1,4 +1,4 @@
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Platform } from "react-native";
 import React from "react";
 // import { Button } from "@ant-design/react-native";
 import { Avatar, Button } from "react-native-elements";
@@ -6,6 +6,7 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { backgroundColor, getTimeString } from "../utils";
 
 interface Message {
+  send: boolean; //是否为发送？
   date: number; //发送日期
   sendId: string; //发送者
   content: string; //内容 目前暂为字符串
@@ -17,6 +18,7 @@ interface Props {}
 interface States {
   msgList: Message[];
   sendBoxText: string;
+  marginBottom: number;
 }
 
 export default class HomeScreen extends React.Component<Props, States> {
@@ -24,8 +26,10 @@ export default class HomeScreen extends React.Component<Props, States> {
     super(props);
     this.state = {
       sendBoxText: "",
+      marginBottom: 5,
       msgList: [
         {
+          send: false,
           date: Date.now() - 20000000000,
           sendId: "1233",
           sendName: "张三",
@@ -35,74 +39,99 @@ export default class HomeScreen extends React.Component<Props, States> {
             "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
         },
         {
-          date: Date.now() - 200000000,
+          send: true,
+          date: Date.now() - 20000000000,
           sendId: "1233",
           sendName: "张三",
-          content: "开始抢红包",
-          sendHeaderPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
-        },
-        {
-          date: Date.now(),
-          sendId: "1233",
-          sendName: "张三",
-          content: "111",
+          content:
+            "微信内置浏览器应该是不支持微软雅黑字体，所以可以使用PingFangSC-Regular字体代替，长得差不多。",
           sendHeaderPhoto:
             "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
         }
       ]
     };
+    this.submit = this.submit.bind(this);
+  }
+  componentDidMount() {
+    if (Platform.OS === "ios") {
+      this.setState({
+        marginBottom: 20
+      });
+    }
+  }
+  //发送信息
+  submit() {
+    let msg: Message = {
+      send: true,
+      date: 0,
+      sendId: "",
+      sendName: "",
+      content: "",
+      sendHeaderPhoto: ""
+    };
+    msg.date = Date.now();
+    (msg.sendId = "123"),
+      (msg.sendName = "李四"),
+      (msg.content = this.state.sendBoxText);
+    this.state.msgList.push(msg);
+    this.setState({
+      msgList: this.state.msgList
+    });
   }
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: backgroundColor }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: backgroundColor,
+          marginBottom: this.state.marginBottom
+        }}
+      >
         <ScrollView>
-          {this.state.msgList.map(msg => {
+          {this.state.msgList.map((msg, key) => {
             return (
               <View
-                style={{ padding: 5, marginHorizontal: 5, marginVertical: 5 }}
+                key={key}
+                style={{ padding: 5, margin:5}}
               >
-                <View style={{ flexDirection: "row" }}>
+                <View
+                  style={{
+                    flexDirection: msg.send ? "row-reverse" : "row"
+                  }}
+                >
                   <Avatar
                     rounded
                     size={45}
+                    containerStyle={{ marginHorizontal: 5 }}
                     source={{ uri: msg.sendHeaderPhoto }}
                   />
-                  <View style={{ flex: 1 }}>
-                    <View
+                  <View style={{ 
+                    flex:1,alignItems:msg.send?"flex-end":"flex-start"}}>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
                       style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        marginBottom: 10
+                        textAlign:msg.send?"right":"left",
+                        fontSize: 12,
+                        width: 100,
+                        marginHorizontal: 5,
+                        marginBottom: 5
                       }}
                     >
-                      <Text
-                        numberOfLines={1}
-                        ellipsizeMode="tail"
-                        style={{
-                          fontSize: 12,
-                          width: 100,
-                          marginLeft: 5
-                        }}
-                      >
-                        {msg.sendName}
-                      </Text>
-                    </View>
+                      {msg.sendName}
+                    </Text>
                     <View
                       style={{
-                        alignSelf: "flex-start",
-                        minWidth: "40%",
-                        maxWidth: "90%",
+                        alignSelf: msg.send ? "flex-end" : "flex-start",
                         borderRadius: 5,
                         backgroundColor: "#FFF",
                         paddingHorizontal: 8,
-                        paddingVertical: 10,
-                        marginLeft: 5
+                        paddingVertical: 10
                       }}
                     >
                       <Text
                         style={{
-                          alignSelf: "flex-start",
+                          alignSelf: msg.send ? "flex-end" : "flex-start",
                           fontSize: 15,
                           fontWeight: "700",
                           paddingHorizontal: 5,
@@ -149,19 +178,18 @@ export default class HomeScreen extends React.Component<Props, States> {
                 fontSize: 13,
                 fontWeight: "600",
                 backgroundColor: "#fff",
-                marginRight: 5,
+                marginRight: 7,
                 borderRadius: 20,
                 paddingHorizontal: 10
               }}
               value={this.state.sendBoxText}
               onChangeText={text => {
+                console.log(text);
                 this.setState({ sendBoxText: text });
               }}
             />
             <Button
               title="发送"
-              type="outline"
-              TouchableComponent={TouchableOpacity}
               titleStyle={{ fontSize: 14 }}
               buttonStyle={{
                 borderRadius: 20,
@@ -169,7 +197,7 @@ export default class HomeScreen extends React.Component<Props, States> {
                 width: 70,
                 borderWidth: 0.9
               }}
-              onPress={() => {}}
+              onPress={this.submit}
             />
           </View>
         </View>
