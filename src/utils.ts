@@ -1,6 +1,9 @@
 export let backgroundColor = "#e9e9f1";
 export let textBoxBackground="#EBEEF5";
-export let primaryColor = "#409EFF"
+export let secondaryTextColor = "#b0b2bf"
+export let primaryColor = "#409EFF";
+export let disabledPrimaryColor = "#e8ebf2"
+export let loadingBackground = "#68696b77"
 export let RequestURL="";
 
 // 返回一个字符串显示发送日期
@@ -46,4 +49,9 @@ export function getTimeString(timestamp: number): string {
       msgMinutes
     );
   }
+}
+//网络请求
+export function fetchData()
+{
+
 }
