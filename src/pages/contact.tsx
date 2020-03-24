@@ -21,8 +21,9 @@ interface States {
   marginBottom: number;
 }
 
-export default class HomeScreen extends React.Component<Props, States> {
-  constructor(props) {
+export default class ContactScreen extends React.Component<Props, States> {
+  static navigationOptions = {};
+  constructor(props: Readonly<Props>) {
     super(props);
     this.state = {
       sendBoxText: "",
@@ -90,10 +91,7 @@ export default class HomeScreen extends React.Component<Props, States> {
         <ScrollView>
           {this.state.msgList.map((msg, key) => {
             return (
-              <View
-                key={key}
-                style={{ padding: 5, margin:5}}
-              >
+              <View key={key} style={{ padding: 5, margin: 5 }}>
                 <View
                   style={{
                     flexDirection: msg.send ? "row-reverse" : "row"
@@ -105,13 +103,17 @@ export default class HomeScreen extends React.Component<Props, States> {
                     containerStyle={{ marginHorizontal: 5 }}
                     source={{ uri: msg.headerPhoto }}
                   />
-                  <View style={{ 
-                    flex:1,alignItems:msg.send?"flex-end":"flex-start"}}>
+                  <View
+                    style={{
+                      flex: 1,
+                      alignItems: msg.send ? "flex-end" : "flex-start"
+                    }}
+                  >
                     <Text
                       numberOfLines={1}
                       ellipsizeMode="tail"
                       style={{
-                        textAlign:msg.send?"right":"left",
+                        textAlign: msg.send ? "right" : "left",
                         fontSize: 12,
                         width: 100,
                         marginHorizontal: 5,

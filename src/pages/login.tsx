@@ -6,7 +6,10 @@ import { primaryColor, textBoxBackground, secondaryTextColor } from "../utils";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { LoginButton } from "../components/loginButton";
 import Loading from "../components/loading";
+import {NavigationScreenProp } from "react-navigation";
 interface Props {
+    screenProps:any;
+    navigation:any;
 }
 interface States {
     loginBottonDisabled: boolean
@@ -20,6 +23,7 @@ export default class LoginScreen extends React.Component<Props, States>{
     Loading: Loading;
     constructor(props: Readonly<Props>) {
         super(props)
+        console.log(props)
         this.inputOK = [false, false]
         this.state = {
             loginBottonDisabled: true
@@ -44,6 +48,7 @@ export default class LoginScreen extends React.Component<Props, States>{
     login()
     {
         this.Loading.startLoading();
+        this.props.navigation.navigate("Main");
     }
     render() {
         return <View style={{ height: "100%", backgroundColor: "#fff" }}>
