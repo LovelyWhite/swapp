@@ -1,6 +1,5 @@
 import { View, Text, TextInput, Platform, SafeAreaView } from "react-native";
 import React from "react";
-// import { Button } from "@ant-design/react-native";
 import { Avatar, Button } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
@@ -22,10 +21,10 @@ interface States {
   sendBoxText: string;
 }
 
-export default class ContactScreen extends React.Component<Props, States> {
+export default class ChatDetailScreen extends React.Component<Props, States> {
   static navigationOptions = {
-    title: "联系人",
-    tabBarIcon:<Ionicons name="ios-people" size={35} color={primaryColor} />
+    title: "群名/联系人名",
+    headerShown:true,
   };
   constructor(props: Readonly<Props>) {
     super(props);
@@ -79,9 +78,8 @@ export default class ContactScreen extends React.Component<Props, States> {
   }
   render() {
     return (
-      <SafeAreaView style={{backgroundColor:primaryColor,height:"100%"}}>
-      <TopBar title={"联系人"}/>
-      <ScrollView style={{height:"100%",backgroundColor:backgroundColor}}>
+      <SafeAreaView style={{height:"100%"}}>
+      <ScrollView style={{height:"100%"}}>
           {this.state.msgList.map((msg, key) => {
             return (
               <View key={key} style={{ padding: 5, margin: 5 }}>
@@ -156,8 +154,7 @@ export default class ContactScreen extends React.Component<Props, States> {
         <View
           style={{
             height: 60,
-            justifyContent: "center",
-            backgroundColor:backgroundColor
+            justifyContent: "center"
           }}
         >
           <View
@@ -190,7 +187,8 @@ export default class ContactScreen extends React.Component<Props, States> {
                 borderRadius: 20,
                 height: 35,
                 width: 70,
-                borderWidth: 0.9
+                borderWidth: 0.9,
+                backgroundColor:primaryColor
               }}
               onPress={this.submit}
             />

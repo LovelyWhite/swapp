@@ -1,14 +1,23 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import LoginScreen from "./src/pages/login";
-import MainScreen from "./src/pages/main";
+import TabNavigator from "./src/pages/main";
+import ChatDetailScreen from "./src/pages/chatDetail";
 
 const AppNavigator = createStackNavigator({
   Login:{
-    screen:LoginScreen
+    screen:LoginScreen,
   },
   Main: {
-    screen: MainScreen
+    screen: TabNavigator,
+  },
+  ChatDetail:{
+    screen:ChatDetailScreen
+  }
+},{
+  defaultNavigationOptions:{
+    headerShown:false,
+    headerBackTitleVisible:false
   }
 }); 
 

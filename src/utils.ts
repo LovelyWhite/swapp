@@ -1,10 +1,13 @@
-export let backgroundColor = "#e9e9f1";
-export let textBoxBackground="#EBEEF5";
-export let secondaryTextColor = "#b0b2bf"
-export let primaryColor = "#409EFF";
-export let disabledPrimaryColor = "#e8ebf2"
-export let loadingBackground = "#68696b77"
-export let RequestURL="";
+import { StatusBar } from "react-native";
+
+export const backgroundColor = "#e9e9f1";
+export const textBoxBackground="#EBEEF5";
+export const secondaryTextColor="#808080";
+export const thirdTextColor = "#b0b2bf"
+export const primaryColor = "#409EFF";
+export const disabledPrimaryColor = "#e8ebf2"
+export const loadingBackground = "#68696b77"
+export const requestURL="";
 
 // 返回一个字符串显示发送日期
 //返回 昨天 前天 和日期

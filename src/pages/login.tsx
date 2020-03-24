@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TextInput, StyleSheet, ToastAndroid } from "react-native";
 import { Button } from "react-native-elements";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5"
-import { primaryColor, textBoxBackground, secondaryTextColor } from "../utils";
+import { primaryColor, textBoxBackground, thirdTextColor } from "../utils";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { LoginButton } from "../components/loginButton";
 import Loading from "../components/loading";
@@ -15,15 +15,11 @@ interface States {
     loginBottonDisabled: boolean
 }
 export default class LoginScreen extends React.Component<Props, States>{
-    static navigationOptions = {
-        headerShown: false,
-    }
     //用于指示输入框输入内容是否可用
     inputOK: [boolean, boolean];
     Loading: Loading;
     constructor(props: Readonly<Props>) {
         super(props)
-        console.log(props)
         this.inputOK = [false, false]
         this.state = {
             loginBottonDisabled: true
@@ -45,10 +41,14 @@ export default class LoginScreen extends React.Component<Props, States>{
         this.setDisable(!ok)
     }
     //登录按钮点击事件
-    login()
+    async login()
     {
         this.Loading.startLoading();
-        this.props.navigation.navigate("Main");
+        // await new Promise((r,s)=>{
+        //     setTimeout(30000,()=>{r("11")})
+        // })
+        this.Loading.stopLoading();
+        this.props.navigation.replace("Main");
     }
     render() {
         return <View style={{ height: "100%", backgroundColor: "#fff" }}>
@@ -60,7 +60,7 @@ export default class LoginScreen extends React.Component<Props, States>{
             </View>
             <View style={{ flex: 2, justifyContent: "flex-start", alignItems: "center" }}>
                 <TextInput
-                    placeholderTextColor={secondaryTextColor}
+                    placeholderTextColor={thirdTextColor}
                     placeholder="手机号"
                     maxLength={18}
                     keyboardType="phone-pad"
@@ -71,7 +71,7 @@ export default class LoginScreen extends React.Component<Props, States>{
                 />
                 <View style={{ height: 10 }}></View>
                 <TextInput
-                    placeholderTextColor={secondaryTextColor}
+                    placeholderTextColor={thirdTextColor}
                     maxLength={18}
                     autoCorrect={false}
                     returnKeyType="join"
