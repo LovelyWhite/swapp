@@ -8,10 +8,10 @@ import { backgroundColor, getTimeString } from "../utils";
 interface Message {
   send: boolean; //是否为发送？
   date: number; //发送日期
-  sendId: string; //发送者
+  account: string; //发送者
   content: string; //内容 目前暂为字符串
-  sendName: string; //发送者昵称
-  sendHeaderPhoto: string; //URL
+  nickName: string; //发送者昵称
+  headerPhoto: string; //URL
 }
 
 interface Props {}
@@ -31,21 +31,21 @@ export default class HomeScreen extends React.Component<Props, States> {
         {
           send: false,
           date: Date.now() - 20000000000,
-          sendId: "1233",
-          sendName: "张三",
+          account: "1233",
+          nickName: "张三",
           content:
             "微信内置浏览器应该是不支持微软雅黑字体，所以可以使用PingFangSC-Regular字体代替，长得差不多。",
-          sendHeaderPhoto:
+          headerPhoto:
             "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
         },
         {
           send: true,
           date: Date.now() - 20000000000,
-          sendId: "1233",
-          sendName: "张三",
+          account: "1233",
+          nickName: "张三",
           content:
             "微信内置浏览器应该是不支持微软雅黑字体，所以可以使用PingFangSC-Regular字体代替，长得差不多。",
-          sendHeaderPhoto:
+          headerPhoto:
             "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
         }
       ]
@@ -64,14 +64,14 @@ export default class HomeScreen extends React.Component<Props, States> {
     let msg: Message = {
       send: true,
       date: 0,
-      sendId: "",
-      sendName: "",
+      account: "",
+      nickName: "",
       content: "",
-      sendHeaderPhoto: ""
+      headerPhoto: ""
     };
     msg.date = Date.now();
-    (msg.sendId = "123"),
-      (msg.sendName = "李四"),
+    (msg.account = "123"),
+      (msg.nickName = "李四"),
       (msg.content = this.state.sendBoxText);
     this.state.msgList.push(msg);
     this.setState({
@@ -103,7 +103,7 @@ export default class HomeScreen extends React.Component<Props, States> {
                     rounded
                     size={45}
                     containerStyle={{ marginHorizontal: 5 }}
-                    source={{ uri: msg.sendHeaderPhoto }}
+                    source={{ uri: msg.headerPhoto }}
                   />
                   <View style={{ 
                     flex:1,alignItems:msg.send?"flex-end":"flex-start"}}>
@@ -118,7 +118,7 @@ export default class HomeScreen extends React.Component<Props, States> {
                         marginBottom: 5
                       }}
                     >
-                      {msg.sendName}
+                      {msg.nickName}
                     </Text>
                     <View
                       style={{

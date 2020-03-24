@@ -1,5 +1,6 @@
 export let backgroundColor = "#e9e9f1";
-
+export let textBoxBackground="#EBEEF5";
+export let primaryColor = "#409EFF"
 export let RequestURL="";
 
 // 返回一个字符串显示发送日期
