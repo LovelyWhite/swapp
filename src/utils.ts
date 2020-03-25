@@ -4,9 +4,11 @@ export const backgroundColor = "#e9e9f1";
 export const textBoxBackground="#EBEEF5";
 export const secondaryTextColor="#808080";
 export const thirdTextColor = "#b0b2bf"
-export const primaryColor = "#409EFF";
-export const disabledPrimaryColor = "#e8ebf2"
+export const primaryColor = "#07c160";
+export const disabledBackgroundColor = "#e1e1e1"
+export const disabledTextColor = "#afb1b5"
 export const loadingBackground = "#68696b77"
+export const primaryFontSize = 15;
 export const requestURL="";
 
 // 返回一个字符串显示发送日期

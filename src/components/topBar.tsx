@@ -25,7 +25,7 @@ export default class TopBar extends React.Component<Props,States>{
     }
     render()
     {
-        return <View style={{height:40,alignItems:"center",justifyContent:"space-between",backgroundColor:primaryColor,flexDirection:"row"}}>
+        return <View style={{height:40,alignItems:"center",justifyContent:"space-between",backgroundColor:primaryColor}}>
         <StatusBar backgroundColor={primaryColor} />
         <Text style={{fontWeight:"600",fontSize:18,marginHorizontal:20,color:"#fff"}}>{this.state.title}</Text>
         <View style={{marginHorizontal:20,flexDirection:"row"}}>

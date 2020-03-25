@@ -1,15 +1,12 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet, ToastAndroid } from "react-native";
-import { Button } from "react-native-elements";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5"
-import { primaryColor, textBoxBackground, thirdTextColor } from "../utils";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { LoginButton } from "../components/loginButton";
+import { View, StatusBar, Text } from "react-native";
+import { Button } from "../components/button";
 import Loading from "../components/loading";
-import {NavigationScreenProp } from "react-navigation";
+import Input from "../components/input";
+import AntDesign from "react-native-vector-icons/AntDesign"
 interface Props {
-    screenProps:any;
-    navigation:any;
+    screenProps: any;
+    navigation: any;
 }
 interface States {
     loginBottonDisabled: boolean
@@ -37,12 +34,11 @@ export default class LoginScreen extends React.Component<Props, States>{
     onInputChange(text: string, index: number) {
         this.inputOK[index] = (text != "")
         // 设置按钮 ok=true 代表可以点击
-        let ok = this.inputOK.indexOf(false) ==-1
+        let ok = this.inputOK.indexOf(false) == -1
         this.setDisable(!ok)
     }
     //登录按钮点击事件
-    async login()
-    {
+    async login() {
         this.Loading.startLoading();
         // await new Promise((r,s)=>{
         //     setTimeout(30000,()=>{r("11")})
@@ -51,64 +47,22 @@ export default class LoginScreen extends React.Component<Props, States>{
         this.props.navigation.replace("Main");
     }
     render() {
-        return <View style={{ height: "100%", backgroundColor: "#fff" }}>
-            <Loading ref={(ref)=>{this.Loading = ref}}></Loading>
-            <View style={{ flex: 2, flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
-                <FontAwesome5 name="bolt" color={primaryColor} size={50}></FontAwesome5>
-                <View style={{ width: 10 }}></View>
-                <Text style={{ fontSize: 35 }}>友信</Text>
+        return <View style={{marginHorizontal:10 }}>
+            <StatusBar barStyle="dark-content" backgroundColor="#00000000" />
+            <View style={{height:50,justifyContent:"center"}}>
+                <AntDesign name="close" size={24}/>
             </View>
-            <View style={{ flex: 2, justifyContent: "flex-start", alignItems: "center" }}>
-                <TextInput
-                    placeholderTextColor={thirdTextColor}
-                    placeholder="手机号"
-                    maxLength={18}
-                    keyboardType="phone-pad"
-                    style={styles.keyBorad}
-                    onChangeText={(text) => {
-                        this.onInputChange(text, 0)
-                    }}
-                />
+            <View style={{marginBottom:30}}></View>
+            <Loading ref={(ref) => { this.Loading = ref }}></Loading>
+            <Text style={{fontSize:25,fontWeight:"700",color:"#000"}}>手机号登录</Text>
+            <View style={{marginBottom:40}}></View>
+            <View>
+                <Input leftText="手机号" onChangeText={(text) => { this.onInputChange(text, 0) }} />
                 <View style={{ height: 10 }}></View>
-                <TextInput
-                    placeholderTextColor={thirdTextColor}
-                    maxLength={18}
-                    autoCorrect={false}
-                    returnKeyType="join"
-                    secureTextEntry={true}
-                    clearTextOnFocus={true}
-                    placeholder="输入密码"
-                    style={styles.keyBorad}
-                    onChangeText={(text) => {
-                        this.onInputChange(text, 1)
-                    }}
-                />
-                <LoginButton disabled={this.state.loginBottonDisabled} onPress={() => { this.login()}} />
+                <Input leftText="密码" secureTextEntry={true} onChangeText={(text) => { this.onInputChange(text, 1) }} />
             </View>
-            <View style={{ flex: 4, flexDirection: "row", justifyContent: "space-evenly", alignItems: "flex-end", marginBottom: 30 }}>
-                <TouchableOpacity activeOpacity={0.7}>
-                    <Text style={{ color: "#000", fontWeight: "700" }} >忘记密码</Text>
-                </TouchableOpacity>
-                <Text>|</Text>
-                <TouchableOpacity activeOpacity={0.7}>
-                    <Text style={{ color: "#000", fontWeight: "700" }} >用户注册</Text>
-                </TouchableOpacity>
-            </View>
+            <View style={{marginBottom:40}}></View>
+            <Button text="登录" width="100%" disabled={this.state.loginBottonDisabled} onPress={() => { this.login() }} />
         </View>
     }
 }
-const styles = StyleSheet.create({
-    keyBorad: {
-
-        textAlign: "center",
-        height: 50,
-        width: "80%",
-        color: "#000",
-        fontSize: 16,
-        fontWeight: "400",
-        backgroundColor: textBoxBackground,
-        marginRight: 7,
-        borderRadius: 30,
-        paddingHorizontal: 20,
-    }
-})

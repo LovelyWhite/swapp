@@ -3,8 +3,12 @@ import { createStackNavigator } from "react-navigation-stack";
 import LoginScreen from "./src/pages/login";
 import TabNavigator from "./src/pages/main";
 import ChatDetailScreen from "./src/pages/chatDetail";
+import IntroScreen from "./src/pages/intro";
 
 const AppNavigator = createStackNavigator({
+  Intro:{
+    screen:IntroScreen
+  },
   Login:{
     screen:LoginScreen,
   },
