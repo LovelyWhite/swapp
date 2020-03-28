@@ -1,13 +1,17 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, StatusBar, SafeAreaView } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons"
-import { primaryColor} from "../utils";
+import { primaryColor, disabledTextColor, disabledBackgroundColor} from "../utils";
+import TopBar from "../components/topBar";
 interface Props {}
 interface States {}
 export default class MeScreen extends React.Component<Props, States> {
-  static navigationOptions = {
-    title: "我",
-    tabBarIcon:<Ionicons name="md-person" size={25} color={primaryColor} />
+  
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "我",
+      tabBarIcon: <Ionicons name="md-person" size={25} color={navigation.isFocused()?primaryColor:disabledBackgroundColor} />
+    };
   };
   constructor(props: Readonly<Props>) {
     super(props);
@@ -15,9 +19,12 @@ export default class MeScreen extends React.Component<Props, States> {
   }
   render() {
     return (
-      <>
-        <Text>Me</Text>
-      </>
+      <SafeAreaView style={{ backgroundColor: primaryColor, height: "100%" }}>
+      <TopBar title={"我"} />
+      <View style={{flex:1,backgroundColor:"#fff"}}>
+
+      </View>
+      </SafeAreaView>
     );
   }
 }

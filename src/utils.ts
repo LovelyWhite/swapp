@@ -8,9 +8,13 @@ export const primaryColor = "#07c160";
 export const disabledBackgroundColor = "#e1e1e1"
 export const disabledTextColor = "#afb1b5"
 export const loadingBackground = "#68696b77"
+export const loadingTextBackground = "#68696bAA"
 export const primaryFontSize = 15;
+export const secondaryFontSize = 12;
 export const requestURL="";
 
+export const marginTopIOS=40;
+export const marginTopAndroid=40;
 // 返回一个字符串显示发送日期
 //返回 昨天 前天 和日期
 export function getTimeString(timestamp: number): string {

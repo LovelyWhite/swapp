@@ -36,7 +36,7 @@ export default class Input extends React.Component<Props, States>{
             justifyContent: "center",
             flexDirection:"row",
         }}>
-            <Text style={[{width:80,alignSelf:"center",fontSize:16,fontWeight:"700",color:"#000",paddingLeft:15},this.props.leftTextStyle]}>{this.props.leftText}</Text>
+            <Text style={[{width:80,alignSelf:"center",fontSize:16,fontWeight:"600",color:"#000",paddingLeft:15},this.props.leftTextStyle]}>{this.props.leftText}</Text>
             <TextInput
                 placeholderTextColor={thirdTextColor}
                 onFocus={() => {

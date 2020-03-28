@@ -1,10 +1,22 @@
-import { View, Text, TextInput, Platform, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Platform,
+  SafeAreaView,
+  StatusBar
+} from "react-native";
 import React from "react";
-// import { Button } from "@ant-design/react-native";
 import { Avatar, Button } from "react-native-elements";
-import Ionicons from "react-native-vector-icons/Ionicons"
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { backgroundColor, getTimeString, primaryColor } from "../utils";
+import {
+  backgroundColor,
+  getTimeString,
+  primaryColor,
+  disabledBackgroundColor,
+  disabledTextColor
+} from "../utils";
 import TopBar from "../components/topBar";
 
 interface Message {
@@ -23,9 +35,19 @@ interface States {
 }
 
 export default class ContactScreen extends React.Component<Props, States> {
-  static navigationOptions = {
-    title: "联系人",
-    tabBarIcon:<Ionicons name="ios-people" size={35} color={primaryColor} />
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "联系人",
+      tabBarIcon: (
+        <Ionicons
+          name="ios-people"
+          size={35}
+          color={
+            navigation.isFocused() ? primaryColor : disabledBackgroundColor
+          }
+        />
+      )
+    };
   };
   constructor(props: Readonly<Props>) {
     super(props);
@@ -56,8 +78,7 @@ export default class ContactScreen extends React.Component<Props, States> {
     };
     this.submit = this.submit.bind(this);
   }
-  componentDidMount() {
-  }
+  componentDidMount() {}
   //发送信息
   submit() {
     let msg: Message = {
@@ -79,9 +100,11 @@ export default class ContactScreen extends React.Component<Props, States> {
   }
   render() {
     return (
-      <SafeAreaView style={{backgroundColor:primaryColor,height:"100%"}}>
-      <TopBar title={"联系人"}/>
-      <ScrollView style={{height:"100%",backgroundColor:backgroundColor}}>
+      <SafeAreaView style={{ backgroundColor: primaryColor, height: "100%" }}>
+        <TopBar title={"联系人"} />
+        <ScrollView
+          style={{ height: "100%", backgroundColor: backgroundColor }}
+        >
           {this.state.msgList.map((msg, key) => {
             return (
               <View key={key} style={{ padding: 5, margin: 5 }}>
@@ -157,7 +180,7 @@ export default class ContactScreen extends React.Component<Props, States> {
           style={{
             height: 60,
             justifyContent: "center",
-            backgroundColor:backgroundColor
+            backgroundColor: backgroundColor
           }}
         >
           <View

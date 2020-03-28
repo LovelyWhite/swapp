@@ -1,7 +1,14 @@
-import { View, Text, TextInput, Platform, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Platform,
+  SafeAreaView,
+  StatusBar
+} from "react-native";
 import React from "react";
 import { Avatar, Button } from "react-native-elements";
-import Ionicons from "react-native-vector-icons/Ionicons"
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { backgroundColor, getTimeString, primaryColor } from "../utils";
 import TopBar from "../components/topBar";
@@ -24,7 +31,7 @@ interface States {
 export default class ChatDetailScreen extends React.Component<Props, States> {
   static navigationOptions = {
     title: "群名/联系人名",
-    headerShown:true,
+    headerShown: true
   };
   constructor(props: Readonly<Props>) {
     super(props);
@@ -55,8 +62,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
     };
     this.submit = this.submit.bind(this);
   }
-  componentDidMount() {
-  }
+  componentDidMount() {}
   //发送信息
   submit() {
     let msg: Message = {
@@ -78,8 +84,8 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
   }
   render() {
     return (
-      <SafeAreaView style={{height:"100%"}}>
-      <ScrollView style={{height:"100%"}}>
+      <SafeAreaView style={{ height: "100%" }}>
+        <ScrollView style={{ height: "100%" }}>
           {this.state.msgList.map((msg, key) => {
             return (
               <View key={key} style={{ padding: 5, margin: 5 }}>
@@ -188,7 +194,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                 height: 35,
                 width: 70,
                 borderWidth: 0.9,
-                backgroundColor:primaryColor
+                backgroundColor: primaryColor
               }}
               onPress={this.submit}
             />
