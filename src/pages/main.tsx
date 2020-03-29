@@ -18,8 +18,10 @@ const TabNavigator = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
+      tabStyle:{marginVertical:5},
       activeTintColor: primaryColor,
-      style:{borderTopColor:"#ffffffee"}
+      labelStyle:{fontWeight:"700"},
+      style:{borderTopColor:"#e2e2e2",backgroundColor:"#f7f7f7",height:55}
     }
   }
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, SafeAreaView, View, StatusBar } from "react-native";
+import { Text, SafeAreaView, View, StatusBar, Platform } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import {
   primaryColor,
@@ -7,11 +7,13 @@ import {
   thirdTextColor,
   secondaryTextColor,
   disabledTextColor,
-  disabledBackgroundColor
+  disabledBackgroundColor,
+  topBarBackground
 } from "../utils";
 import { Avatar } from "react-native-elements";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 import TopBar from "../components/topBar";
+import LinkItem from "../components/linkItem";
 interface Chat {
   isGroup: boolean;
   lastMessage: string;
@@ -52,7 +54,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           isGroup: false,
           lastMessage: "我觉得可以1232222222222222222222222222222213",
           lastTime: 12123123123,
-          name: "小李",
+          name: "小李11111111111111111111111111111111111111",
           headerPhoto:
             "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
         },
@@ -168,44 +170,17 @@ export default class ChatsScreen extends React.Component<Props, States> {
   }
   render() {
     return (
-      <SafeAreaView style={{ backgroundColor: primaryColor, height: "100%" }}>
-      
+      <SafeAreaView style={{ backgroundColor: topBarBackground, height: "100%" ,paddingTop:Platform.OS==="android"?StatusBar.currentHeight:0 }}>
+      <StatusBar barStyle="dark-content" backgroundColor="#00000000" translucent={true} />
         <TopBar title={"友信"} />
-        <ScrollView style={{ height: "100%", backgroundColor: "#fff" }}>
+        <ScrollView style={{ height: "100%"}}>
           {this.state.chatList.map((chat, key) => {
             return (
-              <TouchableOpacity
-                key={key}
-                onPress={() => {
-                  this.toChatDetail(chat, key);
-                }}
-                activeOpacity={0.5}
-              >
-                <View style={{ padding: 5, margin: 5 }}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Avatar
-                      rounded
-                      size={45}
-                      containerStyle={{ marginHorizontal: 5 }}
-                      source={{ uri: chat.headerPhoto }}
-                    />
-                    <View style={{ flex: 1, justifyContent: "space-evenly" }}>
-                      <Text numberOfLines={1} style={{ fontSize: 16 }}>
-                        {chat.name}
-                      </Text>
-                      <Text
-                        numberOfLines={1}
-                        style={{ color: secondaryTextColor }}
-                      >
-                        {chat.lastMessage}
-                      </Text>
-                    </View>
-                    <Text style={{ color: thirdTextColor, fontSize: 10 }}>
-                      {getTimeString(chat.lastTime)}
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
+             <LinkItem image={chat.headerPhoto} key={key} 
+             onPress={()=>{this.toChatDetail(chat, key)}} 
+             primaryText={chat.name} 
+             secondText={chat.lastMessage} 
+             thirdText={getTimeString(chat.lastTime)} />
             );
           })}
         </ScrollView>

@@ -12,7 +12,7 @@ export default class IntroScreen extends React.Component<Props> {
     render() {
         return (
             <View style={{ width: "100%", height: "100%", justifyContent: "space-between" }}>
-                {/* <StatusBar barStyle="light-content" translucent={true}></StatusBar> */}
+                <StatusBar barStyle="light-content" backgroundColor="#00000000" translucent={true} />
                 <Image style={{ width: "100%", height: "100%", position: "absolute", top: 0, bottom: 0, left: 0, right: 0 }} resizeMode="stretch" source={require('../assets/background.jpg')} />
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center",marginVertical:100}}>
                     <FontAwesome5 name="bolt" color={primaryColor+"BB"} size={100}></FontAwesome5>

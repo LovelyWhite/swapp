@@ -1,4 +1,5 @@
 import {
+  Image,
   View,
   Text,
   TextInput,
@@ -94,11 +95,18 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                     flexDirection: msg.send ? "row-reverse" : "row"
                   }}
                 >
-                  <Avatar
-                    rounded
-                    size={45}
-                    containerStyle={{ marginHorizontal: 5 }}
-                    source={{ uri: msg.headerPhoto }}
+                  <Image
+                    style={{
+                      width: 40,
+                      height: 40,
+                      marginHorizontal:5,
+                      borderRadius: 3
+                    }}
+                    resizeMode="cover"
+                    source={{
+                      uri:
+                        "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+                    }}
                   />
                   <View
                     style={{
@@ -193,7 +201,6 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                 borderRadius: 20,
                 height: 35,
                 width: 70,
-                borderWidth: 0.9,
                 backgroundColor: primaryColor
               }}
               onPress={this.submit}

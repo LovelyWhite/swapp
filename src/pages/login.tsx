@@ -58,8 +58,9 @@ export default class LoginScreen extends React.Component<Props, States> {
     return (
       <View style={{ paddingHorizontal: 15,flex:1,
     //   paddingTop:Platform.OS==="ios"?marginTopIOS:0
-    paddingTop:marginTopIOS
+    paddingTop:Platform.OS==="android"?StatusBar.currentHeight:0
       }}>
+        <StatusBar barStyle="dark-content" backgroundColor="#00000000" translucent={true} />
         <Loading
           ref={ref => {
             this.Loading = ref;
@@ -71,7 +72,7 @@ export default class LoginScreen extends React.Component<Props, States> {
           </TouchableOpacity>
         </View>
         <View style={{ marginBottom: 30 }}></View>
-        <Text style={{ fontSize: 25, fontWeight: "600", color: "#000" }}>
+        <Text style={{ fontSize: 22, fontWeight: "600", color: "#000" }}>
           手机号登录
         </Text>
         <View style={{ marginBottom: 40 }}></View>
