@@ -36,7 +36,7 @@ export default class Input extends React.Component<Props, States>{
             justifyContent: "center",
             flexDirection:"row",
         }}>
-            <Text style={[{width:80,alignSelf:"center",fontSize:16,fontWeight:"600",color:"#000",paddingLeft:15},this.props.leftTextStyle]}>{this.props.leftText}</Text>
+            <Text style={[{width:65,alignSelf:"center",fontSize:16,fontWeight:"600",color:"#000",paddingLeft:15},this.props.leftTextStyle]}>{this.props.leftText}</Text>
             <TextInput
                 placeholderTextColor={thirdTextColor}
                 onFocus={() => {
@@ -62,7 +62,7 @@ export default class Input extends React.Component<Props, States>{
                     fontWeight: "400",
                     marginRight: 7,
                     borderRadius: 5,
-                    paddingHorizontal: 20
+                    paddingHorizontal: 10
                 }}
                 onChangeText={this.props.onChangeText}
             >

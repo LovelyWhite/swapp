@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View, StatusBar, SafeAreaView, Platform } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import {
   primaryColor,
   disabledTextColor,
@@ -15,8 +15,8 @@ export default class MeScreen extends React.Component<Props, States> {
     return {
       title: "我",
       tabBarIcon: (
-        <Ionicons
-          name="md-person"
+        <MaterialIcons
+          name="person"
           size={25}
           color={
             navigation.isFocused() ? primaryColor : disabledBackgroundColor

@@ -50,7 +50,7 @@ export default class LinkItem extends React.Component<Props, States> {
                 alignSelf: "center",
                 width: 40,
                 height: 40,
-                marginLeft: 15,
+                marginLeft: 12,
                 marginRight: 10,
               }}
             >
@@ -61,8 +61,6 @@ export default class LinkItem extends React.Component<Props, States> {
             style={{
               flex: 1,
               justifyContent: "space-evenly",
-              borderBottomWidth: 1,
-              borderBottomColor: "#ececec"
             }}
           >
             {this.props.primaryText && (
@@ -86,8 +84,6 @@ export default class LinkItem extends React.Component<Props, States> {
                 fontSize: 10,
                 padding: 10,
                 paddingRight: 20,
-                borderBottomWidth: 0.6,
-                borderBottomColor: "#ececec"
               }}
             >
               {this.props.thirdText}

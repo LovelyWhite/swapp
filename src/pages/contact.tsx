@@ -1,27 +1,19 @@
 import {
   View,
-  Text,
-  TextInput,
   Platform,
   SafeAreaView,
   StatusBar
 } from "react-native";
 import React from "react";
-import { Avatar, Button } from "react-native-elements";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Foundation from "react-native-vector-icons/Foundation"
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import {
-  backgroundColor,
-  getTimeString,
   primaryColor,
   disabledBackgroundColor,
-  disabledTextColor,
   topBarBackground
 } from "../utils";
 import TopBar from "../components/topBar";
 import LinkItem from "../components/linkItem";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 interface Props {}
 interface States {}
@@ -31,9 +23,9 @@ export default class ContactScreen extends React.Component<Props, States> {
     return {
       title: "联系人",
       tabBarIcon: (
-        <Ionicons
-          name="ios-people"
-          size={35}
+        <MaterialIcons
+          name="people"
+          size={25}
           color={
             navigation.isFocused() ? primaryColor : disabledBackgroundColor
           }
@@ -104,7 +96,7 @@ export default class ContactScreen extends React.Component<Props, States> {
           image={
             <View
               style={{
-                margin: 2,
+                margin:2,
                 backgroundColor: "#2882d5",
                 borderRadius: 2,
                 justifyContent: "center",

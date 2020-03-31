@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, SafeAreaView, View, StatusBar, Platform } from "react-native";
-import Entypo from "react-native-vector-icons/Entypo";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import {
   primaryColor,
   getTimeString,
@@ -35,9 +35,9 @@ export default class ChatsScreen extends React.Component<Props, States> {
         color: navigation.isFocused() ? primaryColor : disabledTextColor
       },
       tabBarIcon: (
-        <Entypo
+        <MaterialIcons
           name="chat"
-          size={25}
+          size={20}
           color={
             navigation.isFocused() ? primaryColor : disabledBackgroundColor
           }

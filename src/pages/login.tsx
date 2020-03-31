@@ -66,7 +66,7 @@ export default class LoginScreen extends React.Component<Props, States> {
             this.Loading = ref;
           }}
         ></Loading>
-        <View style={{ height: 50, justifyContent: "center" }}>
+        <View style={{marginTop:30}}>
           <TouchableOpacity activeOpacity={0.7} onPress={()=>{this.props.navigation.goBack()}}>
             <AntDesign name="close" size={24} />
           </TouchableOpacity>
