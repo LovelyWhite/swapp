@@ -1,5 +1,4 @@
-import { StatusBar } from "react-native";
-
+import axios, {Method } from "axios";
 export const backgroundColor = "#e9e9f1";
 export const textBoxBackground="#EBEEF5";
 export const secondaryTextColor="#bebebe";
@@ -12,7 +11,8 @@ export const loadingTextBackground = "#68696bAA"
 export const topBarBackground = "#ededed"
 export const primaryFontSize = 15;
 export const secondaryFontSize = 12;
-export const requestURL="";
+export const requestURL="42.51.195.178:5054";
+export const socketURL="42.51.195.178:9093";
 
 export const marginTopIOS=40;
 export const marginTopAndroid=40;
@@ -61,7 +61,11 @@ export function getTimeString(timestamp: number): string {
   }
 }
 //网络请求
-export function fetchData()
+export function fetchData(method:Method,params?:any)
 {
-
+  return axios.request({
+    method:method,
+    params:params,
+    baseURL:requestURL
+  })
 }

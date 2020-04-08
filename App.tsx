@@ -4,10 +4,14 @@ import LoginScreen from "./src/pages/login";
 import TabNavigator from "./src/pages/main";
 import ChatDetailScreen from "./src/pages/chatDetail";
 import IntroScreen from "./src/pages/intro";
+import RegisterScreen from "./src/pages/register";
 
 const AppNavigator = createStackNavigator({
   Intro:{
     screen:IntroScreen
+  },
+  Register:{
+    screen:RegisterScreen
   },
   Login:{
     screen:LoginScreen,

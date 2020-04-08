@@ -1,7 +1,8 @@
 import React from "react";
-import { TextInput, Text, View, StyleProp, TextStyle } from "react-native";
-import { primaryColor, thirdTextColor, primaryFontSize } from "../utils";
+import { TextInput, Text, View, StyleProp, TextStyle, ViewStyle } from "react-native";
+import { primaryColor, thirdTextColor } from "../utils";
 interface Props {
+    containerStyle?:StyleProp<ViewStyle>;
     onChangeText: (text: string) => void;
     secureTextEntry?: boolean;
     maxLength?: number;
@@ -11,7 +12,6 @@ interface Props {
 
 interface States {
     secureTextEntry: boolean
-    maxLength?: number;
     isActive: boolean;
 }
 export default class Input extends React.Component<Props, States>{
@@ -19,7 +19,6 @@ export default class Input extends React.Component<Props, States>{
         super(props)
         this.state = {
             secureTextEntry: false,
-            maxLength: 18,
             isActive: false
         }
     }
@@ -30,12 +29,12 @@ export default class Input extends React.Component<Props, States>{
             })
     }
     render() {
-        return (<View style={{
+        return (<View style={[{
             borderBottomColor: this.state.isActive ? primaryColor : "#ced0d6",
             borderBottomWidth: this.state.isActive?1.4:0.2, 
             justifyContent: "center",
-            flexDirection:"row",
-        }}>
+            flexDirection:"row"
+        },this.props.containerStyle]}>
             <Text style={[{width:65,alignSelf:"center",fontSize:16,fontWeight:"600",color:"#000",paddingLeft:15},this.props.leftTextStyle]}>{this.props.leftText}</Text>
             <TextInput
                 placeholderTextColor={thirdTextColor}
@@ -49,7 +48,7 @@ export default class Input extends React.Component<Props, States>{
                         isActive: false
                     })
                 }}
-                maxLength={18}
+                maxLength={this.props.maxLength?this.props.maxLength:18}
                 autoCorrect={false}
                 returnKeyType="join"
                 secureTextEntry={this.state.secureTextEntry}

@@ -22,7 +22,7 @@ export default class IntroScreen extends React.Component<Props> {
                 <View style={{ justifyContent: "space-between", flexDirection: "row", paddingHorizontal: 30, paddingVertical: 30 }}>
                     <Button text="登录" onPress={()=>{this.props.navigation.navigate("Login")}}/>
                     <Button text="注册" textColor={primaryColor} backColor={"#fff"} onPress={()=>{
-                        // this.props.navigation.navigate("AAA")
+                        this.props.navigation.navigate("Register")
                     }}/>
                 </View>
             </View>
