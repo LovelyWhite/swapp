@@ -1,4 +1,5 @@
 import axios, {Method } from "axios";
+import { Alert } from "react-native";
 export const backgroundColor = "#e9e9f1";
 export const textBoxBackground="#EBEEF5";
 export const secondaryTextColor="#bebebe";
@@ -11,8 +12,8 @@ export const loadingTextBackground = "#68696bAA"
 export const topBarBackground = "#ededed"
 export const primaryFontSize = 15;
 export const secondaryFontSize = 12;
-export const requestURL="42.51.195.178:5054";
-export const socketURL="42.51.195.178:9093";
+export const requestURL="http://42.51.195.178:5054";
+export const socketURL="http://42.51.195.178:9093";
 
 export const marginTopIOS=40;
 export const marginTopAndroid=40;
@@ -61,11 +62,28 @@ export function getTimeString(timestamp: number): string {
   }
 }
 //网络请求
-export function fetchData(method:Method,params?:any)
+export async function fetchData(url:string,method:Method,params?:any)
 {
-  return axios.request({
-    method:method,
-    params:params,
-    baseURL:requestURL
-  })
+  try{
+    let rs = await axios({
+      headers:{
+        "Content-Type":"application/json"
+      },
+      method:method,
+      data:params,
+      baseURL:url
+    })
+    if(rs.status===200){
+      return Promise.resolve(rs)
+    }
+    else
+    {
+      Alert.alert("提示",""+rs);
+    }
+  }
+  catch(e)
+  {
+    return Promise.reject(e);
+  }
+  return 
 }
