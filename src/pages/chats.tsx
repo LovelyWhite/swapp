@@ -8,19 +8,15 @@ import {
   secondaryTextColor,
   disabledTextColor,
   disabledBackgroundColor,
-  topBarBackground
+  topBarBackground,
+  Chat,
 } from "../utils";
 import { Avatar } from "react-native-elements";
 import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 import TopBar from "../components/topBar";
 import LinkItem from "../components/linkItem";
-interface Chat {
-  isGroup: boolean;
-  lastMessage: string;
-  lastTime: number;
-  name: string;
-  headerPhoto: string;
-}
+import { NavigationEvents } from "react-navigation";
+
 interface Props {
   navigation: any;
 }
@@ -32,7 +28,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
     return {
       title: "消息",
       labelStyle: {
-        color: navigation.isFocused() ? primaryColor : disabledTextColor
+        color: navigation.isFocused() ? primaryColor : disabledTextColor,
       },
       tabBarIcon: (
         <MaterialIcons
@@ -42,7 +38,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
             navigation.isFocused() ? primaryColor : disabledBackgroundColor
           }
         />
-      )
+      ),
     };
   };
 
@@ -56,7 +52,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "小李11111111111111111111111111111111111111",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -64,7 +60,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -72,7 +68,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: Date.now() - 124444443,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -80,7 +76,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -88,7 +84,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -96,7 +92,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -104,7 +100,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -112,7 +108,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -120,7 +116,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -128,7 +124,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -136,7 +132,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -144,7 +140,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -152,7 +148,7 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           isGroup: true,
@@ -160,27 +156,46 @@ export default class ChatsScreen extends React.Component<Props, States> {
           lastTime: 12123123123,
           name: "抢红包1群",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
-        }
-      ]
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
+        },
+      ],
     };
   }
   toChatDetail(chat: Chat, key: number) {
-    this.props.navigation.navigate("ChatDetail");
+    this.props.navigation.navigate({
+      routeName: "ChatDetail",
+      params: { chat },
+    });
   }
   render() {
     return (
-      <SafeAreaView style={{ backgroundColor: topBarBackground, height: "100%" ,paddingTop:Platform.OS==="android"?StatusBar.currentHeight:0 }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#00000000" translucent={true} />
+      <SafeAreaView
+        style={{
+          backgroundColor: topBarBackground,
+          height: "100%",
+          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        }}
+      >
+        <NavigationEvents
+          onWillFocus={() => {
+            StatusBar.setBackgroundColor(topBarBackground);
+          }}
+        />
         <TopBar title={"友信"} />
-        <ScrollView style={{ height: "100%"}}>
+        <ScrollView style={{ height: "100%" }}>
           {this.state.chatList.map((chat, key) => {
             return (
-             <LinkItem image={chat.headerPhoto} key={key} 
-             onPress={()=>{this.toChatDetail(chat, key)}} 
-             primaryText={chat.name} 
-             secondText={chat.lastMessage} 
-             thirdText={getTimeString(chat.lastTime)} />
+              <LinkItem
+                showIcon={true}
+                image={chat.headerPhoto}
+                key={key}
+                onPress={() => {
+                  this.toChatDetail(chat, key);
+                }}
+                primaryText={chat.name}
+                secondText={chat.lastMessage}
+                thirdText={getTimeString(chat.lastTime)}
+              />
             );
           })}
         </ScrollView>

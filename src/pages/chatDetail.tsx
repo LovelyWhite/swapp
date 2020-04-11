@@ -5,14 +5,22 @@ import {
   TextInput,
   Platform,
   SafeAreaView,
-  StatusBar
+  StatusBar,
 } from "react-native";
 import React from "react";
 import { Avatar, Button } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { backgroundColor, getTimeString, primaryColor } from "../utils";
+import {
+  backgroundColor,
+  getTimeString,
+  primaryColor,
+  topBarBackground,
+  Chat,
+} from "../utils";
 import TopBar from "../components/topBar";
+import { NavigationEvents } from "react-navigation";
+import ReturnBar from "../components/returnBar";
 
 interface Message {
   send: boolean; //是否为发送？
@@ -23,20 +31,24 @@ interface Message {
   headerPhoto: string; //URL
 }
 
-interface Props {}
+interface Props {
+  navigation: any;
+}
 interface States {
   msgList: Message[];
+  titleText: string;
   sendBoxText: string;
 }
 
 export default class ChatDetailScreen extends React.Component<Props, States> {
-  static navigationOptions = {
-    title: "群名/联系人名",
-    headerShown: true
-  };
+  // static navigationOptions = {
+  //   title: "群名/联系人名",
+  //   headerShown: false,
+  // };
   constructor(props: Readonly<Props>) {
     super(props);
     this.state = {
+      titleText: "",
       sendBoxText: "",
       msgList: [
         {
@@ -47,7 +59,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
           content:
             "微信内置浏览器应该是不支持微软雅黑字体，所以可以使用PingFangSC-Regular字体代替，长得差不多。",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
         },
         {
           send: true,
@@ -57,9 +69,9 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
           content:
             "微信内置浏览器应该是不支持微软雅黑字体，所以可以使用PingFangSC-Regular字体代替，长得差不多。",
           headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
-        }
-      ]
+            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
+        },
+      ],
     };
     this.submit = this.submit.bind(this);
   }
@@ -72,7 +84,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
       account: "",
       nickName: "",
       content: "",
-      headerPhoto: ""
+      headerPhoto: "",
     };
     msg.date = Date.now();
     (msg.account = "123"),
@@ -80,38 +92,58 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
       (msg.content = this.state.sendBoxText);
     this.state.msgList.push(msg);
     this.setState({
-      msgList: this.state.msgList
+      msgList: this.state.msgList,
     });
   }
   render() {
     return (
-      <SafeAreaView style={{ height: "100%" }}>
+      <SafeAreaView
+        style={{
+          backgroundColor: topBarBackground,
+          height: "100%",
+          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        }}
+      >
+        <NavigationEvents
+          onWillFocus={(payload) => {
+            console.log(payload);
+            const params: Chat = payload.state.params["chat"];
+            this.setState({
+              titleText: params.name,
+            });
+            // StatusBar.setBackgroundColor(topBarBackground);
+          }}
+        />
+        <ReturnBar
+          navigation={this.props.navigation}
+          text={this.state.titleText}
+        />
         <ScrollView style={{ height: "100%" }}>
           {this.state.msgList.map((msg, key) => {
             return (
               <View key={key} style={{ padding: 5, margin: 5 }}>
                 <View
                   style={{
-                    flexDirection: msg.send ? "row-reverse" : "row"
+                    flexDirection: msg.send ? "row-reverse" : "row",
                   }}
                 >
                   <Image
                     style={{
                       width: 40,
                       height: 40,
-                      marginHorizontal:5,
-                      borderRadius: 3
+                      marginHorizontal: 5,
+                      borderRadius: 3,
                     }}
                     resizeMode="cover"
                     source={{
                       uri:
-                        "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg"
+                        "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
                     }}
                   />
                   <View
                     style={{
                       flex: 1,
-                      alignItems: msg.send ? "flex-end" : "flex-start"
+                      alignItems: msg.send ? "flex-end" : "flex-start",
                     }}
                   >
                     <Text
@@ -122,7 +154,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                         fontSize: 12,
                         width: 100,
                         marginHorizontal: 5,
-                        marginBottom: 5
+                        marginBottom: 5,
                       }}
                     >
                       {msg.nickName}
@@ -133,7 +165,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                         borderRadius: 5,
                         backgroundColor: "#FFF",
                         paddingHorizontal: 8,
-                        paddingVertical: 10
+                        paddingVertical: 10,
                       }}
                     >
                       <Text
@@ -142,7 +174,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                           fontSize: 15,
                           fontWeight: "700",
                           paddingHorizontal: 5,
-                          color: "#000"
+                          color: "#000",
                         }}
                       >
                         {msg.content}
@@ -153,7 +185,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                           position: "absolute",
                           bottom: 2,
                           right: 2,
-                          fontSize: 8
+                          fontSize: 8,
                         }}
                       >
                         {getTimeString(msg.date)}
@@ -168,13 +200,13 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
         <View
           style={{
             height: 60,
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <View
             style={{
               flexDirection: "row",
-              marginHorizontal: 10
+              marginHorizontal: 10,
             }}
           >
             <TextInput
@@ -186,10 +218,10 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                 backgroundColor: "#fff",
                 marginRight: 7,
                 borderRadius: 20,
-                paddingHorizontal: 10
+                paddingHorizontal: 10,
               }}
               value={this.state.sendBoxText}
-              onChangeText={text => {
+              onChangeText={(text) => {
                 console.log(text);
                 this.setState({ sendBoxText: text });
               }}
@@ -201,7 +233,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                 borderRadius: 20,
                 height: 35,
                 width: 70,
-                backgroundColor: primaryColor
+                backgroundColor: primaryColor,
               }}
               onPress={this.submit}
             />

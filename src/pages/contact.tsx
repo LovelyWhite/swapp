@@ -1,19 +1,15 @@
-import {
-  View,
-  Platform,
-  SafeAreaView,
-  StatusBar
-} from "react-native";
+import { View, Platform, SafeAreaView, StatusBar } from "react-native";
 import React from "react";
-import Foundation from "react-native-vector-icons/Foundation"
+import Foundation from "react-native-vector-icons/Foundation";
 import {
   primaryColor,
   disabledBackgroundColor,
-  topBarBackground
+  topBarBackground,
 } from "../utils";
 import TopBar from "../components/topBar";
 import LinkItem from "../components/linkItem";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { NavigationEvents } from "react-navigation";
 
 interface Props {}
 interface States {}
@@ -30,7 +26,7 @@ export default class ContactScreen extends React.Component<Props, States> {
             navigation.isFocused() ? primaryColor : disabledBackgroundColor
           }
         />
-      )
+      ),
     };
   };
   constructor(props: Readonly<Props>) {
@@ -44,16 +40,17 @@ export default class ContactScreen extends React.Component<Props, States> {
         style={{
           backgroundColor: topBarBackground,
           height: "100%",
-          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
         }}
       >
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor="#00000000"
-          translucent={true}
+        <NavigationEvents
+          onWillFocus={() => {
+            StatusBar.setBackgroundColor(topBarBackground);
+          }}
         />
         <TopBar title={"联系人"} />
         <LinkItem
+          showIcon={true}
           height={50}
           image={
             <View
@@ -63,7 +60,7 @@ export default class ContactScreen extends React.Component<Props, States> {
                 borderRadius: 2,
                 justifyContent: "center",
                 alignItems: "center",
-                flex: 1
+                flex: 1,
               }}
             >
               <MaterialIcons name="add" size={23} color="#fff" />
@@ -73,6 +70,7 @@ export default class ContactScreen extends React.Component<Props, States> {
           onPress={() => {}}
         />
         <LinkItem
+          showIcon={true}
           height={50}
           image={
             <View
@@ -82,7 +80,7 @@ export default class ContactScreen extends React.Component<Props, States> {
                 borderRadius: 2,
                 justifyContent: "center",
                 alignItems: "center",
-                flex: 1
+                flex: 1,
               }}
             >
               <MaterialIcons name="group" size={23} color="#fff" />
@@ -92,16 +90,17 @@ export default class ContactScreen extends React.Component<Props, States> {
           onPress={() => {}}
         />
         <LinkItem
+          showIcon={true}
           height={50}
           image={
             <View
               style={{
-                margin:2,
+                margin: 2,
                 backgroundColor: "#2882d5",
                 borderRadius: 2,
                 justifyContent: "center",
                 alignItems: "center",
-                flex: 1
+                flex: 1,
               }}
             >
               <Foundation name="price-tag" size={23} color="#fff" />

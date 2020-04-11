@@ -1,22 +1,30 @@
-import axios, {Method } from "axios";
+import axios, { Method } from "axios";
 import { Alert } from "react-native";
 export const backgroundColor = "#e9e9f1";
-export const textBoxBackground="#EBEEF5";
-export const secondaryTextColor="#bebebe";
-export const thirdTextColor = "#b0b2bf"
+export const textBoxBackground = "#EBEEF5";
+export const secondaryTextColor = "#bebebe";
+export const thirdTextColor = "#b0b2bf";
 export const primaryColor = "#00c164";
-export const disabledBackgroundColor = "#e1e1e1"
-export const disabledTextColor = "#afb1b5"
-export const loadingBackground = "#68696b77"
-export const loadingTextBackground = "#68696bAA"
-export const topBarBackground = "#ededed"
+export const disabledBackgroundColor = "#e1e1e1";
+export const disabledTextColor = "#afb1b5";
+export const loadingBackground = "#68696b77";
+export const loadingTextBackground = "#68696bAA";
+export const topBarBackground = "#ededed";
 export const primaryFontSize = 15;
 export const secondaryFontSize = 12;
-export const requestURL="http://42.51.195.178:5054";
-export const socketURL="http://42.51.195.178:9093";
+export const requestURL = "http://42.51.195.178:5054";
+export const socketURL = "http://42.51.195.178:9093";
 
-export const marginTopIOS=40;
-export const marginTopAndroid=40;
+export const marginTopIOS = 40;
+export const marginTopAndroid = 40;
+
+export interface Chat {
+  isGroup: boolean;
+  lastMessage: string;
+  lastTime: number;
+  name: string;
+  headerPhoto: string;
+}
 // 返回一个字符串显示发送日期
 //返回 昨天 前天 和日期
 export function getTimeString(timestamp: number): string {
@@ -62,28 +70,23 @@ export function getTimeString(timestamp: number): string {
   }
 }
 //网络请求
-export async function fetchData(url:string,method:Method,params?:any)
-{
-  try{
+export async function fetchData(url: string, method: Method, params?: any) {
+  try {
     let rs = await axios({
-      headers:{
-        "Content-Type":"application/json"
+      headers: {
+        "Content-Type": "application/json",
       },
-      method:method,
-      data:params,
-      baseURL:url
-    })
-    if(rs.status===200){
-      return Promise.resolve(rs)
+      method: method,
+      data: params,
+      baseURL: url,
+    });
+    if (rs.status === 200) {
+      return Promise.resolve(rs.data);
+    } else {
+      Alert.alert("提示", "网络错误:" + rs.status);
     }
-    else
-    {
-      Alert.alert("提示",""+rs);
-    }
+  } catch (e) {
+    console.log(e);
+    Alert.alert("错误", "" + e);
   }
-  catch(e)
-  {
-    return Promise.reject(e);
-  }
-  return 
 }

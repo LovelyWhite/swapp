@@ -5,28 +5,35 @@ import TabNavigator from "./src/pages/main";
 import ChatDetailScreen from "./src/pages/chatDetail";
 import IntroScreen from "./src/pages/intro";
 import RegisterScreen from "./src/pages/register";
+import UserDetailScreen from "./src/pages/userDetail";
 
-const AppNavigator = createStackNavigator({
-  Intro:{
-    screen:IntroScreen
+const AppNavigator = createStackNavigator(
+  {
+    Intro: {
+      screen: IntroScreen,
+    },
+    Register: {
+      screen: RegisterScreen,
+    },
+    Login: {
+      screen: LoginScreen,
+    },
+    Main: {
+      screen: TabNavigator,
+    },
+    ChatDetail: {
+      screen: ChatDetailScreen,
+    },
+    UserDetail: {
+      screen: UserDetailScreen,
+    },
   },
-  Register:{
-    screen:RegisterScreen
-  },
-  Login:{
-    screen:LoginScreen,
-  },
-  Main: {
-    screen: TabNavigator,
-  },
-  ChatDetail:{
-    screen:ChatDetailScreen
+  {
+    defaultNavigationOptions: {
+      headerShown: false,
+      headerBackTitleVisible: false,
+    },
   }
-},{
-  defaultNavigationOptions:{
-    headerShown:false,
-    headerBackTitleVisible:false
-  }
-}); 
+);
 
 export default createAppContainer(AppNavigator);
