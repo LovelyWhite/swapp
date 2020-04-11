@@ -10,6 +10,7 @@ import TopBar from "../components/topBar";
 import LinkItem from "../components/linkItem";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { NavigationEvents } from "react-navigation";
+import AlphaList from "../components/alphaList";
 
 interface Props {}
 interface States {}
@@ -49,65 +50,773 @@ export default class ContactScreen extends React.Component<Props, States> {
           }}
         />
         <TopBar title={"联系人"} />
-        <LinkItem
-          showIcon={true}
-          height={50}
-          image={
-            <View
-              style={{
-                margin: 2,
-                backgroundColor: "#fb9d44",
-                borderRadius: 2,
-                justifyContent: "center",
-                alignItems: "center",
-                flex: 1,
-              }}
-            >
-              <MaterialIcons name="add" size={23} color="#fff" />
+        <AlphaList
+          headerView={
+            <View>
+              <LinkItem
+                showIcon={true}
+                height={50}
+                leftTextContainerStyle={{
+                  borderBottomColor: disabledBackgroundColor,
+                  borderBottomWidth: 0.333,
+                }}
+                image={
+                  <View
+                    style={{
+                      margin: 2,
+                      backgroundColor: "#fb9d44",
+                      borderRadius: 2,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flex: 1,
+                    }}
+                  >
+                    <MaterialIcons name="add" size={23} color="#fff" />
+                  </View>
+                }
+                primaryText={"新的朋友"}
+                onPress={() => {}}
+              />
+              <LinkItem
+                showIcon={true}
+                height={50}
+                leftTextContainerStyle={{
+                  borderBottomColor: disabledBackgroundColor,
+                  borderBottomWidth: 0.333,
+                }}
+                image={
+                  <View
+                    style={{
+                      margin: 2,
+                      backgroundColor: primaryColor,
+                      borderRadius: 2,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flex: 1,
+                    }}
+                  >
+                    <MaterialIcons name="group" size={23} color="#fff" />
+                  </View>
+                }
+                primaryText={"群聊"}
+                onPress={() => {}}
+              />
+              <LinkItem
+                showIcon={true}
+                height={50}
+                image={
+                  <View
+                    style={{
+                      margin: 2,
+                      backgroundColor: "#2882d5",
+                      borderRadius: 2,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      flex: 1,
+                    }}
+                  >
+                    <Foundation name="price-tag" size={23} color="#fff" />
+                  </View>
+                }
+                primaryText={"标签"}
+                onPress={() => {}}
+              />
             </View>
           }
-          primaryText={"新的朋友"}
-          onPress={() => {}}
-        />
-        <LinkItem
-          showIcon={true}
-          height={50}
-          image={
-            <View
-              style={{
-                margin: 2,
-                backgroundColor: primaryColor,
-                borderRadius: 2,
-                justifyContent: "center",
-                alignItems: "center",
-                flex: 1,
-              }}
-            >
-              <MaterialIcons name="group" size={23} color="#fff" />
-            </View>
-          }
-          primaryText={"群聊"}
-          onPress={() => {}}
-        />
-        <LinkItem
-          showIcon={true}
-          height={50}
-          image={
-            <View
-              style={{
-                margin: 2,
-                backgroundColor: "#2882d5",
-                borderRadius: 2,
-                justifyContent: "center",
-                alignItems: "center",
-                flex: 1,
-              }}
-            >
-              <Foundation name="price-tag" size={23} color="#fff" />
-            </View>
-          }
-          primaryText={"标签"}
-          onPress={() => {}}
+          alphaList={[
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  showIcon={true}
+                  height={50}
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  leftTextContainerStyle={{
+                    borderBottomColor: disabledBackgroundColor,
+                    borderBottomWidth: 0.333,
+                  }}
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+            {
+              tag: "11",
+              view: (
+                <LinkItem
+                  showIcon={true}
+                  height={50}
+                  image={
+                    <View
+                      style={{
+                        margin: 2,
+                        backgroundColor: primaryColor,
+                        borderRadius: 2,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flex: 1,
+                      }}
+                    >
+                      <MaterialIcons name="group" size={23} color="#fff" />
+                    </View>
+                  }
+                  primaryText={"群聊"}
+                  onPress={() => {}}
+                />
+              ),
+            },
+          ]}
         />
       </SafeAreaView>
     );
