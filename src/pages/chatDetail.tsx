@@ -6,11 +6,12 @@ import {
   Platform,
   SafeAreaView,
   StatusBar,
+  ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import { Avatar, Button } from "react-native-elements";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import EvilIcons from "react-native-vector-icons/EvilIcons";
 import {
   backgroundColor,
   getTimeString,
@@ -41,10 +42,7 @@ interface States {
 }
 
 export default class ChatDetailScreen extends React.Component<Props, States> {
-  // static navigationOptions = {
-  //   title: "群名/联系人名",
-  //   headerShown: false,
-  // };
+  chatScrollVIew: ScrollView;
   constructor(props: Readonly<Props>) {
     super(props);
     this.state = {
@@ -86,14 +84,23 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
       content: "",
       headerPhoto: "",
     };
+
     msg.date = Date.now();
     (msg.account = "123"),
       (msg.nickName = "李四"),
       (msg.content = this.state.sendBoxText);
     this.state.msgList.push(msg);
-    this.setState({
-      msgList: this.state.msgList,
-    });
+    this.setState(
+      {
+        sendBoxText: "",
+        msgList: this.state.msgList,
+      },
+      () => {
+        setTimeout(() => {
+          this.chatScrollVIew.scrollToEnd();
+        }, 100);
+      }
+    );
   }
   render() {
     return (
@@ -111,14 +118,18 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
             this.setState({
               titleText: params.name,
             });
-            // StatusBar.setBackgroundColor(topBarBackground);
           }}
         />
         <ReturnBar
           navigation={this.props.navigation}
           text={this.state.titleText}
         />
-        <ScrollView style={{ height: "100%" }}>
+        <ScrollView
+          style={{ height: "100%" }}
+          ref={(ref) => {
+            this.chatScrollVIew = ref;
+          }}
+        >
           {this.state.msgList.map((msg, key) => {
             return (
               <View key={key} style={{ padding: 5, margin: 5 }}>
@@ -144,6 +155,8 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                     style={{
                       flex: 1,
                       alignItems: msg.send ? "flex-end" : "flex-start",
+                      paddingRight: msg.send ? 0 : 45,
+                      paddingLeft: msg.send ? 45 : 0,
                     }}
                   >
                     <Text
@@ -163,7 +176,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                       style={{
                         alignSelf: msg.send ? "flex-end" : "flex-start",
                         borderRadius: 5,
-                        backgroundColor: "#FFF",
+                        backgroundColor: msg.send ? primaryColor : "#fff",
                         paddingHorizontal: 8,
                         paddingVertical: 10,
                       }}
@@ -185,6 +198,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                           position: "absolute",
                           bottom: 2,
                           right: 2,
+                          color: "#000",
                           fontSize: 8,
                         }}
                       >
@@ -199,8 +213,11 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
         </ScrollView>
         <View
           style={{
-            height: 60,
+            height: 50,
             justifyContent: "center",
+            backgroundColor: "#f7f7f7",
+            borderTopColor: "#f9f9f9",
+            borderTopWidth: 0.333,
           }}
         >
           <View
@@ -212,31 +229,41 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
             <TextInput
               style={{
                 flex: 1,
-                height: 35,
+                paddingVertical: 5,
                 fontSize: 13,
                 fontWeight: "600",
                 backgroundColor: "#fff",
                 marginRight: 7,
-                borderRadius: 20,
                 paddingHorizontal: 10,
               }}
+              multiline={true}
+              returnKeyType="none"
               value={this.state.sendBoxText}
               onChangeText={(text) => {
                 console.log(text);
                 this.setState({ sendBoxText: text });
               }}
             />
-            <Button
-              title="发送"
-              titleStyle={{ fontSize: 14 }}
-              buttonStyle={{
-                borderRadius: 20,
-                height: 35,
-                width: 70,
-                backgroundColor: primaryColor,
-              }}
-              onPress={this.submit}
-            />
+            {this.state.sendBoxText != "" ? (
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <EvilIcons name="heart" size={35} />
+                <Button
+                  title="发送"
+                  titleStyle={{ fontSize: 14 }}
+                  buttonStyle={{
+                    height: 30,
+                    width: 50,
+                    backgroundColor: primaryColor,
+                  }}
+                  onPress={this.submit}
+                />
+              </View>
+            ) : (
+              <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <EvilIcons name="heart" size={35} color="#000" />
+                <EvilIcons name="plus" size={35} color="#000" />
+              </View>
+            )}
           </View>
         </View>
       </SafeAreaView>

@@ -41,17 +41,23 @@ export function getTimeString(timestamp: number): string {
   let msgHours = msg.getHours();
   let nowMinutes = now.getMinutes();
   let msgMinutes = msg.getMinutes();
+  let nowSeconds = now.getSeconds();
+  let msgSeconds = msg.getSeconds();
 
+  let h_s = msgHours < 10 ? "0" + msgHours : "" + msgHours;
+  let m_s = msgMinutes < 10 ? "0" + msgMinutes : "" + msgMinutes;
+  let s_s = msgSeconds < 10 ? "0" + msgSeconds : "" + msgSeconds;
   if (nowYear - msgYear === 0) {
     if (nowDate - msgDate === 0) {
       //今天
-      return msgHours + ":" + msgMinutes;
+
+      return h_s + ":" + m_s + ":" + s_s;
     } else if (nowDate - msgDate === 1) {
-      return "昨天 " + msgHours + ":" + msgMinutes;
+      return "昨天 " + h_s + ":" + m_s;
       //昨天
     } else if (nowDate - msgDate === 2) {
       //前天
-      return "前天 " + msgHours + ":" + msgMinutes;
+      return "前天 " + h_s + ":" + m_s;
     } else {
       return msgMouth + "-" + msgDate + " " + msgHours + ":" + msgMinutes;
     }

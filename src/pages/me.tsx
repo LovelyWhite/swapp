@@ -74,7 +74,8 @@ export default class MeScreen extends React.Component<Props, States> {
             StatusBar.setBackgroundColor("#fff");
           }}
         />
-        <View
+        <TouchableWithoutFeedback
+          onPress={this.toUserDetail}
           style={{
             backgroundColor: "#fff",
             flexDirection: "row",
@@ -83,14 +84,12 @@ export default class MeScreen extends React.Component<Props, States> {
             alignItems: "center",
           }}
         >
-          <TouchableWithoutFeedback onPress={this.toUserDetail}>
-            <Image
-              width={50}
-              height={50}
-              style={{ borderRadius: 5 }}
-              source={{ uri: loginData && loginData.minPortrait }}
-            ></Image>
-          </TouchableWithoutFeedback>
+          <Image
+            width={50}
+            height={50}
+            style={{ borderRadius: 5 }}
+            source={{ uri: loginData && loginData.minPortrait }}
+          ></Image>
 
           <View
             style={{
@@ -108,16 +107,13 @@ export default class MeScreen extends React.Component<Props, States> {
             </Text>
           </View>
           <View style={{ height: 50, justifyContent: "flex-end" }}>
-            <TouchableWithoutFeedback
-              onPress={this.toUserDetail}
-              style={{ flexDirection: "row", alignItems: "center" }}
-            >
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
               <AntDesign name="qrcode" size={15} />
               <View style={{ marginLeft: 5 }}></View>
               <AntDesign name="right" size={13}></AntDesign>
-            </TouchableWithoutFeedback>
+            </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
         <View style={{ marginTop: 7 }}></View>
         <LinkItem
           showIcon={true}

@@ -1,12 +1,15 @@
 import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "react-navigation-stack";
 import LoginScreen from "./src/pages/login";
 import TabNavigator from "./src/pages/main";
 import ChatDetailScreen from "./src/pages/chatDetail";
 import IntroScreen from "./src/pages/intro";
 import RegisterScreen from "./src/pages/register";
 import UserDetailScreen from "./src/pages/userDetail";
-
+import StackCardStyleInterpolator from "react-navigation-stack";
 const AppNavigator = createStackNavigator(
   {
     Intro: {
@@ -32,8 +35,8 @@ const AppNavigator = createStackNavigator(
     defaultNavigationOptions: {
       headerShown: false,
       headerBackTitleVisible: false,
+      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     },
   }
 );
-
 export default createAppContainer(AppNavigator);

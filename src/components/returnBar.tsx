@@ -25,13 +25,14 @@ export default class ReturnBar extends React.Component<Props, States> {
             width: "100%",
             flexDirection: "row",
             backgroundColor: topBarBackground,
-            paddingHorizontal: 20,
+            paddingHorizontal: 10,
             alignItems: "center",
           },
           this.props.style,
         ]}
       >
         <TouchableOpacity
+          style={{ padding: 10 }}
           onPress={() => {
             this.props.onBackPress && this.props.onBackPress();
             this.props.navigation.goBack();
