@@ -155,8 +155,8 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                     style={{
                       flex: 1,
                       alignItems: msg.send ? "flex-end" : "flex-start",
-                      paddingRight: msg.send ? 0 : 45,
-                      paddingLeft: msg.send ? 45 : 0,
+                      paddingRight: msg.send ? 0 : 50,
+                      paddingLeft: msg.send ? 50 : 0,
                     }}
                   >
                     <Text
@@ -176,6 +176,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                       style={{
                         alignSelf: msg.send ? "flex-end" : "flex-start",
                         borderRadius: 5,
+                        minWidth: 50,
                         backgroundColor: msg.send ? primaryColor : "#fff",
                         paddingHorizontal: 8,
                         paddingVertical: 10,
@@ -197,7 +198,7 @@ export default class ChatDetailScreen extends React.Component<Props, States> {
                           opacity: 0.3,
                           position: "absolute",
                           bottom: 2,
-                          right: 2,
+                          right: 4,
                           color: "#000",
                           fontSize: 8,
                         }}

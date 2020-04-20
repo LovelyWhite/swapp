@@ -11,7 +11,6 @@ import LinkItem from "../components/linkItem";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { NavigationEvents } from "react-navigation";
 import AlphaList from "../components/alphaList";
-
 interface Props {}
 interface States {}
 
