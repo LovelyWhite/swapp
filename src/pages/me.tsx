@@ -72,6 +72,8 @@ export default class MeScreen extends React.Component<Props, States> {
         <NavigationEvents
           onWillFocus={() => {
             StatusBar.setBackgroundColor("#fff");
+            StatusBar.setTranslucent(true);
+            StatusBar.setBarStyle("dark-content");
           }}
         />
         <TouchableWithoutFeedback

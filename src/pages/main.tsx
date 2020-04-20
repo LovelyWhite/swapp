@@ -7,22 +7,22 @@ import { primaryColor } from "../utils";
 const TabNavigator = createBottomTabNavigator(
   {
     Chats: {
-      screen: ChatsScreen
+      screen: ChatsScreen,
     },
     Contacts: {
-      screen: ContactScreen
+      screen: ContactScreen,
     },
     Me: {
-      screen: MeScreen
-    }
+      screen: MeScreen,
+    },
   },
   {
     tabBarOptions: {
-      tabStyle:{marginVertical:5},
+      tabStyle: { marginVertical: 5 },
       activeTintColor: primaryColor,
-      labelStyle:{fontWeight:"700"},
-      style:{borderTopColor:"#e2e2e2",backgroundColor:"#f7f7f7"}
-    }
+      labelStyle: { fontWeight: "700" },
+      style: { borderTopColor: "#e2e2e2", backgroundColor: "#f7f7f7" },
+    },
   }
 );
 export default TabNavigator;

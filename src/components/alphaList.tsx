@@ -95,7 +95,7 @@ export default class AlphaList extends React.Component<Props, States> {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View
+        {/* <View
           style={{
             position: "absolute",
             right: 10,
@@ -126,7 +126,7 @@ export default class AlphaList extends React.Component<Props, States> {
               </View>
             );
           })}
-        </View>
+        </View>*/}
         <ScrollView style={{ height: "100%" }}>
           <View>{this.props.headerView && this.props.headerView}</View>
           <View style={{ marginTop: 5 }}></View>

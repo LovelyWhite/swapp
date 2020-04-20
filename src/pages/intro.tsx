@@ -1,15 +1,38 @@
 import React from "react";
 import { View, StatusBar, Image, Text } from "react-native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import { primaryColor } from "../utils";
+import { primaryColor, getData } from "../utils";
 import { Button } from "../components/button";
-import { NavigationEvents } from "react-navigation";
-
+import {
+  NavigationEvents,
+  StackActions,
+  NavigationActions,
+} from "react-navigation";
+import Loading from "../components/loading";
+import { setGlobal } from "../global/global";
 interface Props {
   navigation: any;
 }
 
 export default class IntroScreen extends React.Component<Props> {
+  Loading: Loading;
+  async componentDidMount() {
+    let data = null;
+    this.Loading.startLoading("加载中");
+    try {
+      data = await getData("loginData");
+      this.Loading.stopLoading();
+      setGlobal("loginData", data);
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: "Main" })],
+      });
+      this.props.navigation.dispatch(resetAction);
+    } catch (e) {
+      this.Loading.stopLoading();
+    } finally {
+    }
+  }
   render() {
     return (
       <View
@@ -19,10 +42,21 @@ export default class IntroScreen extends React.Component<Props> {
           justifyContent: "space-between",
         }}
       >
+        <StatusBar
+          backgroundColor="#00000000"
+          translucent={true}
+          barStyle="light-content"
+        />
+        <Loading
+          ref={(ref) => {
+            this.Loading = ref;
+          }}
+        />
         <NavigationEvents
           onWillFocus={() => {
             StatusBar.setBackgroundColor("#00000000");
             StatusBar.setTranslucent(true);
+            StatusBar.setBarStyle("light-content");
           }}
         />
         <Image

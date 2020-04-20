@@ -10,6 +10,7 @@ import IntroScreen from "./src/pages/intro";
 import RegisterScreen from "./src/pages/register";
 import UserDetailScreen from "./src/pages/userDetail";
 import StackCardStyleInterpolator from "react-navigation-stack";
+import SearchScreen from "./src/pages/search";
 const AppNavigator = createStackNavigator(
   {
     Intro: {
@@ -29,6 +30,9 @@ const AppNavigator = createStackNavigator(
     },
     UserDetail: {
       screen: UserDetailScreen,
+    },
+    Search: {
+      screen: SearchScreen,
     },
   },
   {

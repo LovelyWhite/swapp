@@ -5,13 +5,13 @@ import Loading from "../components/loading";
 import Input from "../components/input";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { marginTopIOS, fetchData, requestURL } from "../utils";
+import { fetchData, requestURL, putData } from "../utils";
 import {
   NavigationActions,
   StackActions,
   NavigationEvents,
 } from "react-navigation";
-import { setGlobal, getGlobal, LoginData } from "../global/global";
+import { setGlobal } from "../global/global";
 interface Props {
   screenProps: any;
   navigation: any;
@@ -71,6 +71,7 @@ export default class LoginScreen extends React.Component<Props, States> {
     let isOK = result.code === "200" && result.success;
     if (isOK) {
       setGlobal("loginData", result.data);
+      putData("loginData", result.data);
       const resetAction = StackActions.reset({
         index: 0,
         actions: [NavigationActions.navigate({ routeName: "Main" })],
@@ -84,6 +85,7 @@ export default class LoginScreen extends React.Component<Props, States> {
       ]);
     }
   }
+
   render() {
     return (
       <View
@@ -98,6 +100,7 @@ export default class LoginScreen extends React.Component<Props, States> {
           onWillFocus={() => {
             StatusBar.setBarStyle("dark-content");
             StatusBar.setBackgroundColor("#00000000");
+            StatusBar.setTranslucent(true);
           }}
         />
         <Loading

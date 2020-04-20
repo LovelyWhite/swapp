@@ -1,5 +1,6 @@
 import axios, { Method } from "axios";
 import { Alert } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 export const backgroundColor = "#e9e9f1";
 export const textBoxBackground = "#EBEEF5";
 export const secondaryTextColor = "#bebebe";
@@ -94,5 +95,27 @@ export async function fetchData(url: string, method: Method, params?: any) {
   } catch (e) {
     console.log(e);
     Alert.alert("错误", "" + e);
+  }
+}
+
+export async function putData(key: string, value: any) {
+  try {
+    await AsyncStorage.setItem(key, JSON.stringify(value));
+  } catch (e) {
+    console.log(e);
+    return Promise.reject("Error");
+  }
+}
+export async function getData(key: string) {
+  try {
+    const value = await AsyncStorage.getItem(key);
+    if (value !== null) {
+      return Promise.resolve(JSON.parse(value));
+    } else {
+      return Promise.reject("Null");
+    }
+  } catch (e) {
+    console.log(e);
+    return Promise.reject("Error");
   }
 }

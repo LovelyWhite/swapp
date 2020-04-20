@@ -11,7 +11,9 @@ import LinkItem from "../components/linkItem";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { NavigationEvents } from "react-navigation";
 import AlphaList from "../components/alphaList";
-interface Props {}
+interface Props {
+  navigation: any;
+}
 interface States {}
 
 export default class ContactScreen extends React.Component<Props, States> {
@@ -46,9 +48,11 @@ export default class ContactScreen extends React.Component<Props, States> {
         <NavigationEvents
           onWillFocus={() => {
             StatusBar.setBackgroundColor(topBarBackground);
+            StatusBar.setTranslucent(true);
+            StatusBar.setBarStyle("dark-content");
           }}
         />
-        <TopBar title={"联系人"} />
+        <TopBar title={"联系人"} navigation={this.props.navigation} />
         <AlphaList
           headerView={
             <View>

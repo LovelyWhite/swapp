@@ -179,9 +179,11 @@ export default class ChatsScreen extends React.Component<Props, States> {
         <NavigationEvents
           onWillFocus={() => {
             StatusBar.setBackgroundColor(topBarBackground);
+            StatusBar.setTranslucent(true);
+            StatusBar.setBarStyle("dark-content");
           }}
         />
-        <TopBar title={"友信"} />
+        <TopBar title={"友信"} navigation={this.props.navigation} />
         <ScrollView style={{ height: "100%" }}>
           {this.state.chatList.map((chat, key) => {
             return (
