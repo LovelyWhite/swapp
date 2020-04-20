@@ -57,7 +57,7 @@ export default class TopBar extends React.Component<Props, States> {
           </TouchableOpacity>
           <View style={{ width: 20 }}></View>
           <Popover
-            placement="bottom"
+            placement="left"
             overlay={
               <View
                 style={{
