@@ -60,30 +60,35 @@ export default class LoginScreen extends React.Component<Props, States> {
   //登录按钮点击事件
   async login() {
     Keyboard.dismiss();
-    this.Loading.startLoading("登陆中");
-    let result = await fetchData(requestURL + "/userInfo/login", "post", {
-      data: {
-        phone: this.state.phone,
-        password: this.state.password,
-      },
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: "Main" })],
     });
-    this.Loading.stopLoading();
-    let isOK = result.code === "200" && result.success;
-    if (isOK) {
-      setGlobal("loginData", result.data);
-      putData("loginData", result.data);
-      const resetAction = StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: "Main" })],
-      });
-      this.props.navigation.dispatch(resetAction);
-    } else {
-      Alert.alert("提示", result.msg, [
-        {
-          text: "知道了",
-        },
-      ]);
-    }
+    this.props.navigation.dispatch(resetAction);
+    // this.Loading.startLoading("登陆中");
+    // let result = await fetchData(requestURL + "/userInfo/login", "post", {
+    //   data: {
+    //     phone: this.state.phone,
+    //     password: this.state.password,
+    //   },
+    // });
+    // this.Loading.stopLoading();
+    // let isOK = result.code === "200" && result.success;
+    // if (isOK) {
+    //   setGlobal("loginData", result.data);
+    //   putData("loginData", result.data);
+    //   const resetAction = StackActions.reset({
+    //     index: 0,
+    //     actions: [NavigationActions.navigate({ routeName: "Main" })],
+    //   });
+    //   this.props.navigation.dispatch(resetAction);
+    // } else {
+    //   Alert.alert("提示", result.msg, [
+    //     {
+    //       text: "知道了",
+    //     },
+    //   ]);
+    // }
   }
 
   render() {

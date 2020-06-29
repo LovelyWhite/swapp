@@ -58,106 +58,10 @@ export default class ChatsScreen extends React.Component<Props, States> {
           isGroup: true,
           lastMessage: "我觉得可以",
           lastTime: 12123123123,
-          name: "抢红包1群",
+          name: "程序开发群",
           headerPhoto:
             "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: Date.now() - 124444443,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
-        {
-          isGroup: true,
-          lastMessage: "我觉得可以",
-          lastTime: 12123123123,
-          name: "抢红包1群",
-          headerPhoto:
-            "http://b-ssl.duitang.com/uploads/item/201708/06/20170806204014_VfZwe.thumb.700_0.jpeg",
-        },
+        }
       ],
     };
   }
